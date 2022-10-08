@@ -11,7 +11,6 @@
   "license": "MIT",
   "dependencies": {
     "@cdktf/provider-aws": "^9.0.51",
-    "@cdktf/provider-random": "^2.0.79",
     "@types/node": "^18.8.0",
     "cdktf": "^0.12.3",
     "constructs": "^10.1.123",

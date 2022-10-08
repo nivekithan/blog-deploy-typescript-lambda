@@ -1,7 +1,6 @@
 import { Construct } from "constructs";
-import { App, TerraformStack, TerraformOutput } from "cdktf";
+import { App, TerraformOutput, TerraformStack } from "cdktf";
 import * as aws from "@cdktf/provider-aws";
-import * as random from "@cdktf/provider-random";
 import path from "node:path";
 import { TypescriptFunction } from "./lib/typescriptFunction";
 
@@ -21,7 +20,7 @@ const lambdaRolePolicy = {
 
 export type LambdaConfig = {
   /**
-   * Absolute path to directory which contains index.js which then exports handler
+   * Absolute path to directory which contains src/index.js which then exports handler
    * function
    */
   path: string;
@@ -39,10 +38,6 @@ class LambdaStack extends TerraformStack {
     new aws.AwsProvider(this, "aws", {
       region: "ap-south-1",
     });
-
-    new random.RandomProvider(this, "random");
-
-    const pet = new random.Pet(this, "random-name", { length: 2 });
 
     const sourceCodeAsset = new TypescriptFunction(this, "lambda-source-code", {
       absPath: config.path,
@@ -78,7 +73,7 @@ class LambdaStack extends TerraformStack {
       this,
       "slack-search-lambda",
       {
-        functionName: `slack-search-lambda-${pet.id}`,
+        functionName: `slack-search-lambda`,
         s3Bucket: bucket.bucket,
         s3Key: lambdaArchive.key,
         handler: "index.handler",
@@ -115,7 +110,7 @@ const app = new App();
 
 new LambdaStack(app, "cdktf", {
   path: path.resolve(__dirname, "..", "ts-lambda"),
-  version: "0.0.4",
+  version: "0.0.5",
 });
 
 app.synth();
