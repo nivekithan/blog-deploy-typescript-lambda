@@ -1,0 +1,20 @@
+{
+  "name": "cdktf",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@cdktf/provider-aws": "^9.0.51",
+    "@cdktf/provider-random": "^2.0.79",
+    "@types/node": "^18.8.0",
+    "cdktf": "^0.12.3",
+    "constructs": "^10.1.123",
+    "esbuild": "^0.15.10"
+  }
+}
