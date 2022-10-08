@@ -11,9 +11,11 @@
   "license": "MIT",
   "dependencies": {
     "@cdktf/provider-aws": "^9.0.51",
-    "@types/node": "^18.8.0",
     "cdktf": "^0.12.3",
     "constructs": "^10.1.123",
     "esbuild": "^0.15.10"
+  },
+  "devDependencies": {
+    "@types/node": "^18.8.0"
   }
 }
